@@ -29,7 +29,7 @@ function LoginS() {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-4" style={loginStyle}>
       <h2>Login Form</h2>
       <Form onSubmit={handleSubmit}>
         <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
@@ -72,6 +72,16 @@ function LoginS() {
       </Form>
     </div>
   );
-}
+};
+
+
+const loginStyle = {
+    maxWidth: '300px',
+    margin: '50px auto',
+    padding: '20px',
+    border: '1px solid #ccc',
+    borderRadius: '5px',
+    background: '#f9f9f9'
+};
 
 export default LoginS;

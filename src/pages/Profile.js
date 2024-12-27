@@ -1,31 +1,27 @@
 import React, { useState } from 'react';
 import { Form, Button, Col, Row } from 'react-bootstrap';
 
-function profile () {
-  const [image, setImage] = useState(null); // Pour stocker l'image téléchargée
-  const [imagePreview, setImagePreview] = useState(null); // Pour l'aperçu de l'image
+function Profile() {
+  const [image, setImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     politicalParty: '',
   });
 
-  // Fonction pour gérer la sélection d'une image
   const handleImageChange = (e) => {
-    const file = e.target.files[0]; // Récupérer le premier fichier sélectionné
+    const file = e.target.files[0];
     if (file) {
       setImage(file);
-
-      // Créer un aperçu de l'image
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImagePreview(reader.result); // Mettre à jour l'aperçu de l'image
+        setImagePreview(reader.result);
       };
-      reader.readAsDataURL(file); // Lire le fichier en base64
+      reader.readAsDataURL(file);
     }
   };
 
-  // Fonction pour gérer les changements dans les champs du formulaire
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -34,16 +30,13 @@ function profile () {
     }));
   };
 
-  // Fonction pour gérer la soumission du formulaire
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (image) {
       console.log('Nom:', formData.firstName);
       console.log('Prénom:', formData.lastName);
       console.log('Parti politique:', formData.politicalParty);
       console.log('Fichier sélectionné:', image);
-      // Vous pouvez envoyer ces données à un serveur ici
     } else {
       console.log('Aucune image sélectionnée.');
     }
@@ -52,9 +45,7 @@ function profile () {
   return (
     <div className="container mt-5">
       <h2 className="mb-4">Formulaire de Téléchargement de Photo et Informations</h2>
-
       <Form onSubmit={handleSubmit}>
-        {/* Champ Nom */}
         <Form.Group controlId="formFirstName" className="mb-3">
           <Form.Label>Nom</Form.Label>
           <Form.Control
@@ -65,8 +56,6 @@ function profile () {
             placeholder="Entrez votre nom"
           />
         </Form.Group>
-
-        {/* Champ Prénom */}
         <Form.Group controlId="formLastName" className="mb-3">
           <Form.Label>Prénom</Form.Label>
           <Form.Control
@@ -77,8 +66,6 @@ function profile () {
             placeholder="Entrez votre prénom"
           />
         </Form.Group>
-
-        {/* Champ Parti politique */}
         <Form.Group controlId="formPoliticalParty" className="mb-3">
           <Form.Label>Parti Politique</Form.Label>
           <Form.Control
@@ -89,18 +76,10 @@ function profile () {
             placeholder="Entrez le nom du parti politique"
           />
         </Form.Group>
-
-        {/* Champ de sélection d'image */}
         <Form.Group controlId="formFile" className="mb-3">
           <Form.Label>Choisir une photo</Form.Label>
-          <Form.Control
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
-          />
+          <Form.Control type="file" accept="image/*" onChange={handleImageChange} />
         </Form.Group>
-
-        {/* Aperçu de l'image téléchargée */}
         {imagePreview && (
           <Row className="mb-3">
             <Col>
@@ -114,13 +93,9 @@ function profile () {
             </Col>
           </Row>
         )}
-
-        {/* Texte d'information pour l'utilisateur */}
         <Form.Text muted>
           Veuillez télécharger une image de moins de 5 Mo.
         </Form.Text>
-
-        {/* Bouton de soumission */}
         <Button variant="primary" type="submit" className="mt-3">
           Soumettre
         </Button>
@@ -129,4 +104,4 @@ function profile () {
   );
 }
 
-export default profile;
+export default Profile;
