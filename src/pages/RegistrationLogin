@@ -1,0 +1,138 @@
+import React, { useState } from 'react';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
+function RegistrationLogin() {
+  // Déclaration des états pour chaque champ du formulaire
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    region: '',
+    departement: '',
+    arrondissement: '',
+    quartier: '',
+    phone: '',
+    email: '',
+    password: ''
+  });
+
+  // Fonction pour mettre à jour les champs du formulaire
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
+
+  // Fonction pour gérer l'envoi du formulaire
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form Submitted:', formData);
+    // Vous pouvez ajouter la logique pour envoyer ces données à une API ici
+  };
+
+  return (
+    <div className="container mt-4">
+      <h2>Registration Form</h2>
+      <Form onSubmit={handleSubmit}>
+        <FloatingLabel controlId="floatingFirstName" label="First Name" className="mb-3">
+          <Form.Control
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            value={formData.firstName}
+            onChange={handleChange}
+          />
+        </FloatingLabel>
+
+        <FloatingLabel controlId="floatingLastName" label="Last Name" className="mb-3">
+          <Form.Control
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            value={formData.lastName}
+            onChange={handleChange}
+          />
+        </FloatingLabel>
+
+        <FloatingLabel controlId="floatingRegion" label="Region" className="mb-3">
+          <Form.Control
+            type="text"
+            name="region"
+            placeholder="Region"
+            value={formData.region}
+            onChange={handleChange}
+          />
+        </FloatingLabel>
+
+        <FloatingLabel controlId="floatingDepartement" label="Department" className="mb-3">
+          <Form.Control
+            type="text"
+            name="departement"
+            placeholder="Department"
+            value={formData.departement}
+            onChange={handleChange}
+          />
+        </FloatingLabel>
+
+        <FloatingLabel controlId="floatingArrondissement" label="Arrondissement" className="mb-3">
+          <Form.Control
+            type="text"
+            name="arrondissement"
+            placeholder="Arrondissement"
+            value={formData.arrondissement}
+            onChange={handleChange}
+          />
+        </FloatingLabel>
+
+        <FloatingLabel controlId="floatingQuartier" label="Neighborhood" className="mb-3">
+          <Form.Control
+            type="text"
+            name="quartier"
+            placeholder="Neighborhood"
+            value={formData.quartier}
+            onChange={handleChange}
+          />
+        </FloatingLabel>
+
+        <FloatingLabel controlId="floatingPhone" label="Phone Number" className="mb-3">
+          <Form.Control
+            type="tel"
+            name="phone"
+            placeholder="Phone Number"
+            value={formData.phone}
+            onChange={handleChange}
+          />
+        </FloatingLabel>
+
+        <FloatingLabel controlId="floatingEmail" label="Email address" className="mb-3">
+          <Form.Control
+            type="email"
+            name="email"
+            placeholder="name@example.com"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </FloatingLabel>
+
+        <FloatingLabel controlId="floatingPassword" label="Password" className="mb-3">
+          <Form.Control
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+        </FloatingLabel>
+
+        <Button variant="primary" type="submit" className="mt-3">
+          Register
+        </Button>
+      </Form>
+    </div>
+  );
+}
+
+export default RegistrationLogin;

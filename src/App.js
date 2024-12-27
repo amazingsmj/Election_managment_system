@@ -12,6 +12,8 @@
 // }
 
 // export default App;
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';

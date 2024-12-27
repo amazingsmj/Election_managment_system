@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { MapContainer, GeoJSON, useMap } from 'react-leaflet';
+import { MapContainer, GeoJSON,TileLayer, useMap } from 'react-leaflet';
 // import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -171,6 +171,10 @@ const CameroonMap = () => {
         style={{ height: '100%', width: '100%' }}
         zoomControl={true}
       >
+          <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
         {/* Render GeoJSON data */}
         <GeoJSON 
           key={JSON.stringify(currentGeoData)}
